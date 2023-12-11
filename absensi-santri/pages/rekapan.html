@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rekapan Absensi Santri</title>
+  <!-- Add Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f8f9fa; /* Bootstrap background color */
+    }
+    .container {
+      max-width: 800px; /* Adjust the maximum width as needed */
+    }
+  </style>
+</head>
+<body class="container py-4">
+  <div class="text-center">
+    <h2 class="mb-3">Rekapan Absensi Santri</h2>
+
+    <a href="index.html" class="btn btn-secondary mb-3">Go Back</a>
+  </div>
+
+  <table id="absensiTable" class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID Santri</th>
+        <th>Tanggal</th>
+        <th>Waktu Absen</th>
+        <th>Keterangan</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Data will be inserted here -->
+    </tbody>
+  </table>
+
+  <script>
+    function goBack() {
+      window.history.back();
+    }
+
+    fetch('http://localhost:8080/absensi')
+      .then(response => response.json())
+      .then(data => {
+        const tableBody = document.getElementById('absensiTable').getElementsByTagName('tbody')[0];
+        data.forEach(item => {
+          let row = tableBody.insertRow();
+          row.insertCell(0).innerHTML = item.id_santri;
+          row.insertCell(1).innerHTML = item.tanggal;
+          row.insertCell(2).innerHTML = item.waktu_absen;
+          row.insertCell(3).innerHTML = item.keterangan;
+        });
+      })
+      .catch(error => console.error('Error:', error));
+  </script>
+</body>
+</html>

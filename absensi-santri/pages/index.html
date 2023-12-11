@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistem Absensi Santri</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            padding-top: 60px; /* Untuk menyesuaikan tinggi navbar di Bootstrap */
+        }
+
+        .header {
+            text-align: center;
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+
+        .menu {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            padding: 20px;
+        }
+
+        .menu-item {
+            text-align: center;
+        }
+
+        .menu-item img {
+            width: 300px; /* Ganti dengan lebar gambar yang diinginkan dalam piksel */
+            height: auto;
+            box-sizing: border-box;
+            border: 4px solid #575D63;
+            padding: 10px;
+        }
+
+        .menu-item p {
+            margin-top: 10px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <a class="navbar-brand" href="#">Sistem Absensi Santri</a>
+    </nav>
+
+    <div class="header">
+        <h1>Selamat Datang di Sistem Absensi Santri</h1>
+        <p>Platform untuk mencatat kehadiran santri</p>
+    </div>
+
+    <div class="menu">
+        <div class="menu-item">
+            <a href="absen.html"><img src="image/absen.jpg"></a>
+            <p>Absen</p>
+        </div>
+        <div class="menu-item">
+            <a href="rekapan.html"><img src="image/rekap.jpg"></a>
+            <p>Rekap Absensi</p>
+        </div>
+        <div class="menu-item">
+            <a href="tambah.html"><img src="image/tambah.jpg"></a>
+            <p>Tambah Santri</p>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS dan Popper.js -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>

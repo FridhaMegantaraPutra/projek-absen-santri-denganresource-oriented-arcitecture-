@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tambah Santri</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background-color: #f4f4f4;
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    form {
+      max-width: 400px;
+      margin: 20px auto;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    button {
+      width: 100%;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 4px;
+    }
+
+    button.back {
+      background-color: #ccc;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 class="mt-4">Tambah Santri</h1>
+
+    <form id="tambahSantriForm">
+      <div class="form-group">
+        <label for="nama">Nama Santri:</label>
+        <input type="text" class="form-control" id="nama" name="nama" required>
+      </div>
+
+      <div class="form-group">
+        <label for="kelas">Kelas Santri:</label>
+        <input type="text" class="form-control" id="kelas" name="kelas" required>
+      </div>
+
+      <button type="button" class="btn btn-success" onclick="tambahSantri()">Tambah Santri</button>
+      <button class="btn btn-secondary back" onclick="goBack()">Back</button>
+    </form>
+  </div>
+
+  <!-- Bootstrap JS and dependencies -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<!-- ... (sebelumnya) ... -->
+
+<script>
+    function tambahSantri() {
+      const nama = document.getElementById('nama').value;
+      const kelas = document.getElementById('kelas').value;
+  
+      fetch('http://localhost:8080/tambah-santri', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          nama: nama,
+          kelas: kelas,
+        }),
+      })
+      .then(response => response.json())
+      .then(data => {
+        alert(data.message);
+        // Redirect ke index.html jika penambahan santri berhasil
+        if (data.message === 'Data santri berhasil ditambahkan.') {
+          window.location.href = 'index.html';
+        }
+      })
+      .catch(error => console.error('Error:', error));
+    }
+  
+    function goBack() {
+      window.history.back();
+    }
+  </script>
+  
+  <!-- ... (setelahnya) ... -->
+  
+</body>
+</html>
